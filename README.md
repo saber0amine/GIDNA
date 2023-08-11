@@ -1,3 +1,3 @@
 # GIDNA
 Internship Project
-[img:!](![Alt text](Gidna.jpg))
+(![Alt text](Gidna.jpg))
