@@ -1,0 +1,158 @@
+{% extends 'main.html' %}
+{% load static %} 
+
+{% block top %}
+<div class="top-bar">
+  <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+  <div class="userConsignes">
+    <span class="usePage-planification">CONSIGNES: </span>
+  </div>
+</div>
+{% endblock top %}
+{% block contenu %}
+
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////CONTENT///////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>Organisez vos activités</h1>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card card-body">
+                <form class="filtrer_objectif" method="get">
+                  
+                    {{filterPlanification.form}}       
+                    <button id="btn_filtrer_objectif" type="submit" class="btn btn-success btn-sm btn-block" >
+                     <i class='bx bx-filter'></i> Filtrer
+                      </button>
+                </form>
+            </div>
+        </div>
+          <br />
+          
+          <div class="row ">
+           
+            <div class="col-md-12" id="project-sec">
+              
+              <!-- <h5 class="title">Projet:</h5> -->
+              
+              <div class="card card-body">
+                
+                <a  id="add-ligne-planification" class="btn btn-primary btn-sm btn-block" href=" {% url 'create_tache' %}"
+                  ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle ligne</span></a
+                >
+               
+                <table class="table table-sm table- table-hover table-bordered" id="table">
+                 
+                  <thead>
+                    <tr >    
+                                                  
+                       <th  class="min-col"  scope="col"><i class='bx bx-calendar' ></i> Date </th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-parking"></i> Project</th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-bank"></i> Nature</th>
+                      <th class="min-col"  scope="col"><i class="bx bx-bullseye"></i> Objectif</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-receipt' ></i> Taches</th>
+                      <th class="min-col"  scope="col"><i class='bx bxs-hourglass-top' ></i> Heures Estimées</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-wallet' ></i></i> Livrable</th>
+                      <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-trash'></i> Supprimer</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="first-ligne-planification">
+                      {% if taches %}
+                      {% for tache in taches  %}
+                      <tr class="first-ligne-objectif">
+                        <td class="added-text" > {{ tache.date_tache|date:"d/m/Y H:i:s" }}</td>
+                        <td class="added-text"> {{tache.projet }}</td>
+                        <td class="added-text"> {{tache.nature }}</td>
+                        <td class="added-text">   {{tache.obj }}
+                         </td>
+                        <td class="added-text">
+                          {{tache.tache }}
+                           </td>
+                           
+                        <td class="added-text"> {{tache.hrs_est }}</td>
+
+                    <td class="added-text">
+                            {{tache.livrable }}
+                             </td>
+                        
+                        <td> 
+                                            <div class="btn-group dropstart"> 
+                                              <a class="btn btn-secondary dropdown-toggle" type="submit" href="{% url 'update-tache' tache.id%}">
+                                                Modifier                       
+                                              </a>
+
+                                            </div>
+                        </td>
+                        
+                        <td> 
+                                                <!-- --------------------Button trigger modal ------------------------>
+                                      <a id="test" type="submit" class="btn btn-success btn-sm btn-block" href="{% url 'delete-tache' tache.id%}">
+                                            Supprimer
+                                        </a>
+  
+        
+                       </td>
+                   
+                          </tr>
+  
+                        {% endfor %}
+                        {% endif %}
+
+               
+                  </tbody>
+                </table>
+
+                </div>              
+              </div>
+            </div>
+           
+            <br />
+          
+            
+          </div>
+        </div>
+        
+      </div>
+
+          {% comment %} <!-- ---------------------------------javascrit files--------------------------------------------------- --> {% endcomment %}
+
+          <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+          <script src="{% static 'js/project.js' %}"></script>
+          <script>
+            const typedUsePagePlanification = new Typed(".usePage-planification", {
+              strings: [
+                "Étape 3 : Complétez la feuille « Planification » en récapitulant la date du projet, sa nature, ses objectifs, ",
+                "Et les tâches et les actions associées => Mentionnez également les heures estimées pour chaque tâche.",
+                "N'oubliez pas de spécifier le document justifiant la réalisation des actions.",
+              ],
+              typeSpeed: 30,
+              backSpeed: 20,
+              startDelay: 1000,
+              backDelay: 2500,
+              loop: true,
+            });
+            let form_field_livrable = document.querySelector('#id_livrable')
+form_field_livrable.placeholder='Nom du livrable que vous souhaitez filtrer';
+
+let form_field_tache = document.querySelector('#id_tache')
+form_field_tache.placeholder='Ecrit l\'objectif que vous souhaitez filtrer';
+
+          </script>
+
+  
+  </body>
+</html>
+{% endblock contenu %}

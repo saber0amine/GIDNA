@@ -1,0 +1,194 @@
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  :root {
+    --card-height: 80vh;
+    --card-width: calc(var(--card-height) );
+    --main-color: rgb(255, 106, 0);
+    --second-color: rgb(20, 20, 60);
+  }
+  
+  
+  body {
+    min-height: 100vh;
+    background-image: var(--second-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+  }
+  
+  
+  .card {
+    background-image: var(--second-color);
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    
+    display: flex;
+    font-size: 1.15em;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-family: cursive;
+  }
+
+.project-title{
+font-weight: bolder;
+font-size: larger;
+color: var(--main-color);
+
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+.text {
+    font-weight: 500;
+    font-size: large;
+   color: #bab1cb ;
+
+    }
+  
+.detail{
+  padding-bottom: 3%;
+}
+  
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(
+      var(--rotate)
+      ,var(--main-color), #000000 43%,var(--second-color));
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+  
+  a {
+    color: #212534;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+
+  /*//////////////////////////save and close BTN/////////////////////////////////////*/
+.btn.btn-primary.btn-sm.btn-block {
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+    cursor: hand;
+    text-align: center;
+    text-transform: capitalize;
+    /* border: 1px solid #fff; */
+    border-radius:50px;
+    position: relative;
+    overflow: hidden !important;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    /* background: transparent!important; */
+    z-index: 10;
+  }
+  
+  .btn.btn-primary.btn-sm.btn-block:hover {
+    color: var(--second-color);
+  }
+  .btn.btn-primary.btn-sm.btn-block::before {
+    content: "";
+    width: 0%;
+    height: 100%;
+    display: block;
+    background: var(--main-color);
+    position: absolute;
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+    left: -10%;
+    opacity: 1;
+    top: 0;
+    z-index: -12;
+    -moz-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    -o-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 2px 0px 14px var(--second-color);
+  }
+  
+  .btn.btn-primary.btn-sm.btn-block::after {
+    content: "";
+    width: 0%;
+    height: 100%;
+    display: block;
+  
+    background: var(--second-color);
+    position: absolute;
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+    left: -10%;
+    opacity: 0;
+    top: 0;
+    z-index: -15;
+    -webkit-transition: all 0.94s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    -moz-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    -o-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+    box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
+  }
+  .btn.btn-primary.btn-sm.btn-block:hover::before,
+  .btn1O:hover::before {
+    opacity: 1;
+    width: 116%;
+  }
+  .btn.btn-primary.btn-sm.btn-block:hover::after,
+  .btn1O:hover::after {
+    opacity: 1;
+    width: 120%;
+  }
+  

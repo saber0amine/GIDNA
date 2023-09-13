@@ -1,0 +1,53 @@
+{% extends 'update-base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenu %}
+<div class="login-box">
+<h1>Salut <Strong style="color: rgb(80, 250,250 )"> {{ request.user|upper }} : </Strong>  </h1>
+
+<h2>Changer vos Tâche </h2>
+<form method="POST" autocomplete="off" class="card-form">
+<div class="user-box">
+{% csrf_token %}
+
+
+<label>Tâche précédente :  </label>
+
+<br>
+{{form.tache}}
+<br>
+{{form.hrs_est}}
+<br>
+{{form.livrable }}
+<br>
+<div class="dropdown-center ">
+    <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     Choos your project 
+    </button>
+     {{ form.projet}}
+  </div>
+
+    <br><br><br>
+    <div class="dropdown-center">
+        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Choos your Nature                       
+       </button>
+       {{ form.nature}}
+        
+      </div>
+      <br><br><br>
+
+      <div class="dropdown-center ">
+        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+         Choos your Objectif 
+        </button>
+         {{ form.obj}}
+      </div>
+      <br><br>
+{% endblock  %}
+{% block back %}
+<button href="{% url 'objectif' %}" class="btn btn-secondary"> 
+    Back &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+</button>
+{% endblock back %}

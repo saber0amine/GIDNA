@@ -1,0 +1,88 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realisation page</title>
+    <link rel="stylesheet" href="{% static 'css/view-record.css' %} 
+    " />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <style>
+
+          body {
+            background-image: linear-gradient(#141e30, #243b55);
+            
+          }
+
+          .card {
+            background-image: linear-gradient( to top , 
+            #141e30, #000);
+            color: rgb(250, 250, 250);
+        
+          }
+      </style>
+  </head>
+  <body>
+<div class="card">
+<div class="card custom-card">
+    <div class="card-header">
+        <h5 class="">This is   <strong> {{request.user}}</strong> card : </h5>
+        <h5 class="card-title project-title">{{ realisation.projet|upper }}</h5>
+    </div>
+    <div class="card-body">
+        <hr class="divider">
+
+        <div class="details">
+            <div class="detail">
+                <strong>Emplacement:</strong>
+                <span class="text">{{ realisation.emplacement }}</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Objectif:</strong>
+                <span class="text">{{ realisation.obj }}</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Tâche:</strong>
+                <span class="text">{{ realisation.tache }}</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Heures Estimées:</strong>
+                <span class="text">{{ realisation.hrs_est }}H</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Heures Attribuées:</strong>
+                <span class="text">{{ realisation.hr_attr }}H</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Nom de Livrable:</strong>
+                <span class="text">{{ realisation.livrable }}</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Date de Création:</strong>
+                <span class="text">{{ realisation.date_realisation }}</span class="text">
+            </div>
+            <div class="detail">
+                <strong>Avancement:</strong>
+                <span class="text">100% BRAVO  {{request.user}} ! </span class="text">
+            </div>
+        </div>
+    </div>
+ 
+</div>
+</div>
+<div class="d-flex justify-content-center mt-3 login_container">
+    {% comment %} <!-- ---------------------------- Back Button --- ------------------------> {% endcomment %}
+     <a href="{% url 'realisation' %}" class="btn btn-primary btn-sm btn-block">
+                               Back
+     </a>    
+  </div>
+</body>
+</html>

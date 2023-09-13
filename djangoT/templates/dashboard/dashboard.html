@@ -1,0 +1,180 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block contenu %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-M Gidna</title>
+    <link rel="stylesheet" href="{% static 'css/projectStyle.css' %}" />
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous"
+    />
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+    />
+    <style>
+        :root {
+            --background-image: url("{% static '/images/Background-website-01.jpg' %}");
+            --primary-color: rgb(255, 159, 37); /* Define your primary color */
+        }
+
+        body {
+            margin-left : 8%;
+            background-image: var(--background-image);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f5f5f5; /* Fallback background color */
+        }
+
+        .container {
+
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .chart-container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .chart-label {
+            font-weight: bold;
+        }
+
+        .info-text {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .custom-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .custom-icon {
+            font-size: 35px;
+            margin: 0 20px;
+            color: var(--primary-color);
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 36px; /* Adjust the font size for larger numbers */
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>T-M Gidna Dashboard</h1>
+    <h3>Visualisez les statistiques {{ request.user|upper }}</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nombre de vos Projets</th>
+            <th scope="col">Nombre de vos Objectifs</th>
+
+            <th scope="col">Nombre de vos Tâches</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><div class="circle">{{ number_projects }}</div></td>
+            <td><div class="circle">{{ number_objectifs }}</div></td>
+
+            <td><div class="circle">{{ number_tasks }}</div></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="info-text">
+        <p>Informations supplémentaires :</p>
+        <p>Aperçu de vos projets, tâches et objectifs.</p>
+    </div>
+
+    <div class="custom-icons">
+      <a href="{% url 'lists' %} "class="menu-item">
+         <i class='bx bxs-check-circle custom-icon'> Projets -</i> </a>
+         <a href="{% url 'objectif' %} "class="menu-item">
+        <i class='bx bxs-message-square-check custom-icon'> Objectifs -</i> </a>
+        <a href="{% url 'planification' %} "class="menu-item">
+        <i class='bx bxs-bar-chart-alt-2 custom-icon'> Taches -</i> </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Les Taches réalisées', 'Les Taches non réalisées'],
+                datasets: [{
+                    label: '# of Tasks',
+                    data: [{{ task_realiser }}, {{ task_non_realiser }}],
+                    backgroundColor: ['rgb(255, 159, 37)', '#243b55'], // You can change colors
+                    borderWidth: 1
+                   
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    </script>
+</div>
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script src="{% static 'js/project.js' %}"></script>
+</body>
+</html>
+
+{% endblock contenu %}

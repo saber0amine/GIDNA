@@ -1,0 +1,158 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block top %}
+<div class="top-bar">
+  <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+  <div class="userConsignes">
+    <span class="consOfRealisation">CONSIGNES: </span>
+  </div>
+</div>
+{% endblock top %}
+{% block contenu %}
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////CONTENT///////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>✨Vos Réalisations Ici. ✨</h1>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card card-body">
+                <form class="filtrer_objectif" method="get">
+                  
+                    {{filterRealisation.form}}       
+                    <button id="btn_filtrer_objectif" type="submit" class="btn btn-success btn-sm btn-block" >
+                     <i class='bx bx-filter'></i> Filtrer
+                      </button>
+                </form>
+            </div>
+        </div>
+          <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          <div class="row ">
+           
+            <div class="col-md-12" id="project-sec">
+                            
+              <div class="card card-body">
+                
+                <a id="add-ligne-realisation" class="btn btn-primary btn-sm btn-block" href="{% url 'valider_realisation' %}"
+                  ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle ligne</span></a
+                >
+               
+                <table class="table table-sm table- table-hover table-bordered" id="table">
+                 
+                  <thead>
+                    <tr>    
+                                                  
+                       <th  class="min-col"  scope="col"><i class='bx bx-calendar' ></i> Date </th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-parking"></i> Project</th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-bank"></i> Emplacement</th>                        
+                      <th class="min-col"  scope="col"><i class="bx bx-bullseye"></i> Objectif</th>
+                       <th class="min-col"  scope="col"><i class='bx bx-receipt' ></i> Taches</th>
+                      <th class="min-col"  scope="col"><i class='bx bxs-hourglass-top' ></i> Heures Estimées</th>
+
+                      <th class="min-col"  scope="col"><i class='bx bxs-hourglass-top' ></i> H-Attribuées</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-wallet' ></i></i> Livrable</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-id-card'></i></i>     Card</th>
+
+
+                      
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="first-ligne-realisation">
+                            {% if livrables %}
+                          {% for livrable in livrables  %}                     
+                          <td class="added-text">{{ livrable.date_realisation}}</td>
+                          <td class="added-text"> {{livrable.projet }}</td>
+                            <td class="added-text"> {{livrable.emplacement }}</td>
+                            <td class="added-text"> {{livrable.obj }}</td>
+                            <td  class="added-text"> {{livrable.tache }}</td>
+                            <td class="added-text"> {{livrable.hrs_est }}</td>
+                            <td class="added-text"> {{livrable.hr_attr }}</td>
+                            <td class="added-text"> 
+                              <a  type="submit" class="btn btn-success btn-sm btn-block" href="{{ livrable.livrable.url }}">
+                                Livrable                            </a>
+                          </td>
+
+                            <td> 
+                                                                                    <!-- --------------------Button trigger modal ------------------------>
+                                                                            <a  type="submit" class="btn btn-success btn-sm btn-block" href="{% url 'realisation'  livrable.id%}">
+                                                                                Show
+                                                                              </a>
+                                                            
+                            </td>
+                          </tr>
+                            {% endfor %}
+                            {% endif %}
+
+
+                    
+
+                    
+                  </tbody>
+                </table>
+
+                </div>              
+              </div>
+            </div>
+           
+            <br />
+           
+            
+          </div>
+        </div>
+        
+      </div>
+  
+          {% comment %} <!-- ---------------------------------javascrit files--------------------------------------------------- --> {% endcomment %}
+
+   
+          <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+          <script src="{% static 'js/project.js' %}"></script>
+          <script>
+            const typedConsOfRealisation = new Typed(".consOfRealisation", {
+              strings: [
+                "Étape 4 : La dernière étape, appelée « Réalisations », récapitule tout le contenu des étapes précédentes.",
+                "Vous pouvez attribuer des heures à chaque action, stocker/télécharger des livrables dans la base de données.",
+                "L'option << CARD >> permet d'indiquer le taux d'avancement sur chaque action d'un objectif pour chaque employé.",
+              ],
+              typeSpeed: 30,
+              backSpeed: 20,
+              startDelay: 1000,
+              backDelay: 2500,
+              loop: true,
+            });
+          </script>
+        
+  </body>
+</html>
+{% endblock contenu %}

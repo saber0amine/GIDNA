@@ -1,0 +1,217 @@
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-color: rgb(255, 106, 0);
+  --second-color: rgb(20, 20, 60);
+}
+div {
+  display: block;
+}
+.gidnaLogo img {
+  width: 50%;
+  animation: floatImage 10s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0);
+  
+  }
+  50%{    transform: translateY(-2.4rem);
+
+  
+  }
+100% {    transform: translateY(0);
+
+  
+  }
+}
+
+
+.schoolLogo {
+  background-size: cover;
+  background-color: var(--main-color);
+  width: 100%;
+}
+.schoolLogo img {
+  background-color: var(--main-color);
+  width: 100%;
+}
+.login-content {
+  display: flex;
+  height: 100vh;
+}
+.left-side {
+  flex: 1;
+  background-image: linear-gradient(rgb(20,20,60),rgba(64, 5, 106, 1)) ;
+    /* background-image: url(/Assets/8_13_2023\ 3_22_20\ AM.png); */
+  background-size: cover;
+  background-position: center;
+}
+
+/* .left-side,
+.right-side {
+  flex:1;
+  /* Allow the containers to share available space equally 
+} */
+.right-side {
+  background-image:var( --background-image);
+    background-size: cover;
+  background-position: center;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: flex-start; /* Align items at the top */
+}
+
+.form-horizontal {
+  margin-top: 80px;
+}
+
+.gidnaLogo {
+  margin-bottom: 15px;
+}
+
+/* ++++++++++++++++Style for the whole form container +++++++++++++++++*/
+
+.formLoginStyle {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for form items */
+.item {
+  margin-bottom: 25px;
+ 
+}
+
+/* Style for input fields */
+input {
+  margin-left: -15%;
+  width: 130%;
+  padding: 10px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+}
+input:hover {
+    border: 1px solid var(--second-color);
+  }
+/* Style for custom checkbox */
+.customCheckbox  {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  color:var(--second-color);
+  white-space: nowrap;
+}
+.customCheckbox input {
+  margin-right: 8px;
+}
+/* Style for submit button */
+.sumbitBtn {
+  margin-left: -15%;
+  width: 140%;
+  padding: 10px;
+  background-color: var(--second-color);
+  color: var(--main-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.sumbitBtn:hover {
+  background-color: var(--main-color);
+  color: var(--second-color);
+  /* margin-left: 0% ;
+  width: 100%; */
+}
+
+/* Style for forgot password link */
+.mdp-oublie {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.mdp-oublie:hover {
+  text-decoration: underline;
+}
+
+/* **********************Style right side with typed js ***************************** */
+
+.logo-text {
+    font-size:45px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transform: translateY(20px); /* Initially pushed down */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.logo-text-main {
+    margin-right: 5px;
+    color: rgb(255, 119, 23);
+}
+
+.logo-text-icon {
+    font-size: 20px;
+    color: #666;
+}
+.content-typed {
+  color: rgb(255, 119, 23);
+  margin-left: 15px;
+  margin-top: 15%;
+}
+.titleApp-typed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20%;
+  font-size: 150%;
+}
+
+.multiple-title {
+  font-size: 100%;
+}
+
+.content-title {
+  margin-bottom: 20%;
+}
+.multiple-content {
+  font-size: 100%;
+}
+.multiple-content {
+  animation: cursor-blink 150s infinite;
+}
+
+@keyframes cursor-blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #8400ff;
+  }
+}

@@ -1,0 +1,349 @@
+{% extends 'main.html' %}
+{% load static %} 
+{% load crispy_forms_tags %}
+
+
+{% block top %}
+<div class="top-bar">
+  <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+  <div class="userConsignes">
+    <span class="usePage">CONSIGNES: </span>
+  </div>
+</div>
+{% endblock top %}
+
+
+{% block contenu %}
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>Créez votre feuille List</h1>
+            </div>
+          </div>
+          <br />
+          <div class="row ">
+{% comment %} <!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>            {% endcomment %}
+  <div class="col-md-8">
+      <div class="card card-body">
+          <form class="filtrer_projet" method="get">
+            
+              {{filterProjet.form}}         
+              <button id="btn_filtrer_projet" type="submit" class="btn btn-success btn-sm btn-block" >
+               <i class='bx bx-filter'></i> Filtrer
+                </button>
+          </form>
+      </div>
+  </div>
+
+
+<div class="col-md-12" id="project-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-project"  class="btn btn-primary btn-sm btn-block" href="{% url 'create_projet' %}"
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter un nouveau projet</span></a
+    >
+   
+  
+
+
+    <table class="table table-sm table- table-hover table-bordered" id="Project-table">
+     
+      <thead>
+        <tr>                                    
+          <th  scope="col" ><i class="bx bxs-parking"></i> Project</th>
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-trash'></i> Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>  
+         {% if projets %}
+          {% for projet in projets  %}
+        <tr class="first-ligne-project">
+          {% comment %} <!-- ----------------------------Colone 1------------------------ ------------------------> {% endcomment %}
+       
+          <td class="added-text">{{ projet.projet }}</td>
+       
+{% comment %} <!-- ----------------------------Colone 2------------------------ ------------------------> {% endcomment %}
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <a href="{% url 'update-projet' projet.id %}" class="btn btn-secondary dropdown-toggle" type="submit" >
+                Modifier                       
+               </a>
+          {% comment %} <div class="dropdown-menu">
+              <form class="px-4 py-3" id="modified-form">
+                <div class="mb-3">
+                  <label for="modifiedProject" class="form-label">Le Projet :</label>
+                  <input type="text" class="form-control" id="modifiedProject" placeholder="Project Name">
+                </div>
+                <a  style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+              </form>     
+            </div>
+            </div> {% endcomment %}
+          </td> 
+{% comment %} <!-- ----------------------------Colone 3------------------------ ------------------------> {% endcomment %}
+
+  <td> 
+{% comment %} <!-- ----------------------------Button trigger modal---- ------------------------> {% endcomment %}
+    <a href="{% url 'delete-projet' projet.id %}" id="success-save" type="submit" class="btn btn-success btn-sm btn-block" >
+      Supprimer
+      </a>
+
+{% comment %} <!-- -----------------------------------------Modal---------- --------------------> {% endcomment %}
+      {% comment %} <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel">Deleted Successfully 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+          </td>
+        </form >
+
+        </tr>  
+         {% endfor %}
+        {% endif %}
+      </tbody>
+      
+    </table>
+
+ 
+    </div>              
+  </div>
+{% comment %} </form> {% endcomment %}
+
+{% comment %} <!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------> {% endcomment %}
+<div class="col-md-8">
+  <div class="card card-body">
+      <form class="filtrer_projet" method="get">
+        
+          {{filterNature.form}}         
+          <button id="btn_filtrer_projet" type="submit" class="btn btn-success btn-sm btn-block" >
+           <i class='bx bx-filter'></i> Filtrer
+            </button>
+      </form>
+  </div>
+</div>
+<div class="col-md-12" id="nature-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-nature" class="btn btn-primary btn-sm btn-block" href="{% url 'create_nature' %}"
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle Nature</span></a
+    >
+   
+    <table class="table table-sm table- table-hover table-bordered" id="Nature-table">
+     
+      <thead>
+        <tr>    
+                                      
+          <th scope="col"><i class="bx bx-leaf"></i> Nature</th>
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-trash'></i> Supprimer</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-ligne-nature">
+          {% comment %} <!-- ----------------------------Colone 1------------------------ ------------------------> {% endcomment %}
+{% comment %} <textarea placeholder="Ecrit le nom de la Nature " name="nature" class="selected-nature" cols="25" rows="2"></textarea> {% endcomment %}
+
+                {% if natures %}
+                {% for nature in natures %}
+                <td class="added-text"> {{ nature.nature }}</td>
+
+{% comment %} <!-- ----------------------------Colone 2------------------------ ------------------------> {% endcomment %}
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <a href="{% url 'update-nature' nature.id %}" class="btn btn-secondary dropdown-toggle" type="submit" >
+                Modifier                       
+               </a>
+     
+            </div>
+          </td>  
+   {% comment %} <!-- ----------------------------Colone 3------------------------ ------------------------> {% endcomment %}
+
+          <td> 
+
+{% comment %} <!-- ----------------------------Button trigger modal---- ------------------------> {% endcomment %}
+    <a  type="button" class="btn btn-success btn-sm btn-block" href="{% url 'delete-nature' nature.id %}">
+      Supprimer
+      </a>
+
+{% comment %} <!-- -----------------------------------------Modal---------- --------------------> {% endcomment %}
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {% comment %} <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel2">Successful 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+          </td>
+       
+
+        </tr>
+           {% endfor %}
+          {% endif %}
+      </tbody>
+    </table>
+
+    </div>              
+  </div>
+<br />
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<div class="col-md-8">
+  <div class="card card-body">
+      <form class="filtrer_projet" method="get">
+        
+          {{filterEmplacement.form}}         
+          <button id="btn_filtrer_projet" type="submit" class="btn btn-success btn-sm btn-block" >
+           <i class='bx bx-filter'></i> Filtrer
+            </button>
+      </form>
+  </div>
+</div>
+<div class="col-md-12" id="emp-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-emplacement" class="btn btn-primary btn-sm btn-block" href="{% url 'create_emplacement' %}"
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter un nouvel Emplacement</span></a
+    >
+   
+    <table class="table table-sm table- table-hover table-bordered" id="Emplacement-table-">
+     
+      <thead>
+        <tr>    
+                                      
+          <th scope="col"  scope="col"><i class="bx bxs-bank"></i> Emplacement</th>  
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-trash'></i> Supprimer</th>
+
+
+          
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-ligne-emplacement">
+            {% if emplacements %}
+            {% for emplacement in emplacements %}
+            <td class="added-text" > {{ emplacement.emplacement }}</td>          
+
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <a class="btn btn-secondary dropdown-toggle" type="submit" href="{% url 'update-emplacement' emplacement.id %}">
+                Modifier                       
+               </a>
+            {% comment %} <div class="dropdown-menu">
+              <form class="px-4 py-3" id="modified-form3">
+                <div class="mb-3">
+                  <label for="modifiedProject" class="form-label">L'emplacement :</label>
+                  <input type="text" class="form-control" id="modifiedProject3" placeholder="Emplacement Name">
+                </div>
+               
+                <a  style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+              </form>
+             
+            </div> {% endcomment %}
+            </div>
+          </td>
+
+          
+          <td> 
+{% comment %} <!-- ----------------------------Button trigger modal---- ------------------------> {% endcomment %}
+    <a  type="button" class="btn btn-success btn-sm btn-block" href="{% url 'delete-emplacement' emplacement.id %}">
+      Supprimer
+      </a>
+
+{% comment %} <!-- -----------------------------------------Modal---------- --------------------> {% endcomment %}
+      {% comment %} <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel3">Successful 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+     
+    </table>
+
+
+
+    </div>              
+  </div>
+
+
+  
+{% comment %} <!--------------------------------fin sections --------------------------------------------->          {% endcomment %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+          {% comment %} <!-- ---------------------------------javascrit files--------------------------------------------------- --> {% endcomment %}
+   
+
+    
+
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script src="{% static 'js/project.js' %}"></script>
+  <script>
+    const typedUse = new Typed(".usePage", {
+      strings: [
+        "Étape 1 : Remplissez la feuille « Liste » avec les détails du projet, sa nature et son emplacement.",
+        "L'emplacement dépendra de l'endroit de la réunion, soit au siège, soit sur le chantier.",
+      ],
+      typeSpeed: 30, // Vitesse de frappe par caractère (plus élevée = plus rapide)
+      backSpeed: 20, // Vitesse de suppression par caractère (plus élevée = plus rapide)
+      startDelay: 1000, // Délai initial en millisecondes avant de commencer à taper
+      backDelay: 2500, // Délai après la suppression avant de répéter
+      loop: true,
+    });
+    let form_field_nature = document.querySelector('#id_nature')
+form_field_nature.placeholder='Nom du projet que vous souhaitez filtrer';
+
+let form_field_emplacement = document.querySelector('#id_emplacement')
+form_field_emplacement.placeholder='Nom de l\'emplacement  que vous souhaitez filtrer';
+  </script>
+  </body>
+
+</html>
+
+{% endblock contenu %}

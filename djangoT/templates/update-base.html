@@ -1,0 +1,371 @@
+
+{% load crispy_forms_tags %}
+
+<style>
+    :root {
+        --main-color: rgb(255, 159, 37);
+        --second-color: rgb(20, 20, 60);
+      }
+      
+    html {
+        height: 100%;
+      }
+      body {
+        margin:0;
+        padding:0;
+        font-family: sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+      }
+      
+      .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,.5);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+      }
+      
+      .login-box h2  , .login-box h1 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+      }
+      
+      .login-box .user-box {
+        position: relative;
+      }
+      
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+      }
+      .login-box .user-box label {
+        position: absolute;
+        top:0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+      }
+      
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: #03e9f4;
+        font-size: 12px;
+      }
+      
+      .login-box form a {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+        letter-spacing: 4px
+      }
+      
+      .login-box a:hover {
+        background: #03e9f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #03e9f4,
+                    0 0 25px #03e9f4,
+                    0 0 50px #03e9f4,
+                    0 0 100px #03e9f4;
+      }
+      
+      .login-box a span {
+        position: absolute;
+        display: block;
+      }
+      
+      .login-box a span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+      
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,100% {
+          left: 100%;
+        }
+      }
+      
+      .login-box a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s
+      }
+      
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,100% {
+          top: 100%;
+        }
+      }
+      
+      .login-box a span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s
+      }
+      
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,100% {
+          right: 100%;
+        }
+      }
+      
+      .login-box a span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s
+      }
+      
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,100% {
+          bottom: 100%;
+        }
+      }
+      button {
+        color:#fff;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        border:none;
+        border-radius: 100rem;
+        font-size:1.3rem;
+
+      }
+      /***********************SAVE BTN*********************************************/
+.btn.btn-success.btn-sm.btn-block {
+  /* top: 40px; */
+  /* padding: 20px 90px;
+  margin: 0 10px; */
+  display: inline-block;
+  /* text-decoration: none; */
+  font-family: "proxima-nova", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  color: #fff;
+  cursor: hand;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: 0px;
+  position: relative;
+  overflow: hidden !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: transparent !important;
+}
+
+.btn.btn-success.btn-sm.btn-block:hover {
+  border: 1px solid green;
+  color: var(--second-color) !important;
+}
+.btn.btn-success.btn-sm.btn-block::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--second-color);
+  position: absolute;
+  left: 0%;
+  opacity: 1;
+  top: 0;
+  z-index: -12;
+  -webkit-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.btn.btn-success.btn-sm.btn-block::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: green;
+  position: absolute;
+  left: 0%;
+  opacity: 1;
+  top: 0;
+  z-index: -15;
+  -webkit-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.btn.btn-success.btn-sm.btn-block:hover::before,
+.btn.btn-success.btn-sm.btn-block:hover::before {
+  opacity: 1;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.btn.btn-success.btn-sm.btn-block:hover::after,
+.btn.btn-success.btn-sm.btn-block:hover::after {
+  opacity: 1;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+/*//////////////////////////ADD BTN/////////////////////////////////////*/
+.btn.btn-primary.btn-sm.btn-block {
+  font-family: "proxima-nova", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  cursor: hand;
+  text-align: center;
+  text-transform: capitalize;
+  /* border: 1px solid #fff; */
+  /* border-radius:50px; */
+  position: relative;
+  overflow: hidden !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  /* background: transparent!important; */
+  z-index: 10;
+}
+
+.btn.btn-primary.btn-sm.btn-block:hover {
+  color: var(--main-color);
+}
+.btn.btn-primary.btn-sm.btn-block::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  display: block;
+  background: var(--main-color);
+  position: absolute;
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  left: -10%;
+  opacity: 1;
+  top: 0;
+  z-index: -12;
+  -moz-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: 2px 0px 14px var(--main-color);
+}
+
+.btn.btn-primary.btn-sm.btn-block::after {
+  content: "";
+  width: 0%;
+  height: 100%;
+  display: block;
+
+  background: var(--main-color);
+  position: absolute;
+  -ms-transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  left: -10%;
+  opacity: 0;
+  top: 0;
+  z-index: -15;
+  -webkit-transition: all 0.94s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  -moz-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  -o-transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  transition: all 0.4s cubic-bezier(0.2, 0.95, 0.57, 0.99);
+  box-shadow: 2px 0px 14px rgba(0, 0, 0, 0.6);
+}
+.btn.btn-primary.btn-sm.btn-block:hover::before,
+.btn1O:hover::before {
+  opacity: 1;
+  width: 116%;
+}
+.btn.btn-primary.btn-sm.btn-block:hover::after,
+.btn1O:hover::after {
+  opacity: 1;
+  width: 120%;
+}
+
+      
+</style>
+
+<body>
+     {% block contenu %}
+
+
+             {% endblock  %}
+          </div>
+ 
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+             <button type="submit" class="btn btn-info"> 
+            
+                Update  &nbsp; <i class="fa fa-plus" aria-hidden="true"></i>
+            
+            </button> 
+    
+            &nbsp; 
+            
+       {% block back %}{% endblock back %}
+    
+        </form>
+      </div>
+
+ 

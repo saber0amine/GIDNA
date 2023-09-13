@@ -1,0 +1,18 @@
+{% extends 'update-base.html' %}
+{% block contenu %}
+<div class="login-box">
+<h1>Salut <Strong> {{ request.user }} : </Strong>  </h1>
+<h2>Changer votre emplacement </h2>
+<form method="POST" autocomplete="off" class="card-form">
+ <div class="user-box">
+{% csrf_token %}
+{{form.emplacement}}
+<label> L'emplacement </label>
+{% endblock  %}
+
+{% block back %}
+<button href="{% url 'lists' %}" class="btn btn-secondary"> 
+    Back &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+</button>
+{% endblock back %}

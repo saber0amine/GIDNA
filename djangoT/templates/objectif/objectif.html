@@ -1,0 +1,150 @@
+{% extends 'main.html' %}
+{% load static %} 
+{% block top %}
+<div class="top-bar">
+  <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+  <div class="userConsignes">
+    <span class="usePage-objectif">CONSIGNES: </span>
+  </div>
+</div>
+{% endblock top %}
+{% block contenu %}
+
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////CONTENT///////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>Énumérez vos objectifs</h1>
+            </div> 
+          </div>
+          <div class="col-md-8">
+            <div class="card card-body">
+                <form class="filtrer_objectif" method="get">
+                  
+                    {{filterObjectif.form}}         
+                    <button id="btn_filtrer_objectif" type="submit" class="btn btn-success btn-sm btn-block" >
+                     <i class='bx bx-filter'></i> Filtrer
+                      </button>
+                </form>
+            </div>
+        </div>
+          <br />
+          <div class="row ">
+           
+            <div class="col-md-12" id="project-sec">
+              
+              <!-- <h5 class="title">Projet:</h5> -->
+              
+              <div class="card card-body">
+                
+                <a id="add-ligne-objectif" class="btn btn-primary btn-sm btn-block" href="{% url 'create_objectif' %}"
+    ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle ligne</span></a
+                >
+
+                <table class="table table-sm table- table-hover table-bordered" id="table">
+                 
+                  <thead>
+                    <tr>
+                      <th scope="col"><i class="bx bxs-parking"></i> Project</th>
+                      <th scope="col"><i class="bx bx-leaf"></i> Nature</th>
+                      <th scope="col"><i class="bx bx-bullseye"></i> Objectif</th>
+                      <th scope="col"><i class='bx bx-calendar' ></i> Date D'objectif</th>
+                      <th scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+                      <th scope="col"><i class='bx bx-trash'></i> Supprimer</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if objectifs %}
+                    {% for objectif in objectifs  %}
+                    <tr class="first-ligne-objectif">
+                      <td class="added-text" > {{objectif.projet }}
+                       </td>
+                      <td class="added-text"> {{objectif.nature }}
+                       </td>
+                       {% comment %} <td class="added-text">  <textarea readonly placeholder="Ecrit votre Objectif " name="objectif-text" class="selected-objectif" cols="35" rows="5">{{objectif.obj }}</textarea></td> {% endcomment %}
+
+                      <td class="added-text"> {{objectif.obj }}</td>
+                      <td class="added-text"> {{objectif.date_objectif }}</td>
+                      
+                  
+                      
+                      <td> 
+                                          <div class="btn-group dropstart"> 
+                                            <a class="btn btn-secondary dropdown-toggle" type="submit" href="{% url 'update-objectif' objectif.id%}">
+                                              Modifier                       
+                                            </a>
+
+                                          </div>
+                      </td>
+                      
+                      <td> 
+                                              <!-- --------------------Button trigger modal ------------------------>
+                                    <a id="test" type="submit" class="btn btn-success btn-sm btn-block" href="{% url 'delete-objectif' objectif.id%} ">
+                                          Supprimer
+                                      </a>
+
+                                     
+                     </td>
+                 
+                    </tr>
+
+                      {% endfor %}
+                      {% endif %}
+
+                  </tbody>
+                </table>
+
+                </div>              
+              </div>
+            </div>
+           
+            <br />
+          
+            
+          </div>
+        </div>
+        
+      </div>
+
+          {% comment %} <!-- ---------------------------------javascrit files--------------------------------------------------- --> {% endcomment %}
+
+ 
+          <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+          <script src="{% static 'js/project.js' %}"></script>
+          <script>
+            const typedUsePageObjectif = new Typed(".usePage-objectif", {
+              strings: [
+                "Étape 2 : Renseignez la feuille « Objectif » en vous basant sur les informations de la feuille « Liste ».",
+                "Remplissez les colonnes projets, nature et objectifs en fonction des options de la liste déroulante.",
+                "N'oubliez pas d'indiquer les dates estimatives pour chaque objectif.",
+              ],
+              typeSpeed: 30,
+              backSpeed: 20,
+              startDelay: 1000,
+              backDelay: 2500,
+              loop: true,
+            });
+            let form_field_nature = document.querySelector('#id_nature')
+form_field_nature.placeholder='Nom du nature que vous souhaitez filtrer';
+
+
+let form_field_date1 = document.querySelector('#id_date_objectif_0')
+form_field_date1.placeholder='de : AAAA/MM/JJ';
+
+let form_field_date2 = document.querySelector('#id_date_objectif_1')
+form_field_date2.placeholder='à : AAAA/MM/JJ';
+
+
+          </script>
+  </body>
+</html>
+{% endblock contenu %}

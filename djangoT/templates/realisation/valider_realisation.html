@@ -1,0 +1,97 @@
+{% extends 'add-base.html' %} 
+{% block contenu %}
+{% load crispy_forms_tags %}
+
+<div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title">Précisez l'état d'avancement de vos tâches et objectifs
+            </h3>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                <div class="input-group mb-5">
+             
+              
+                 <div class="dropdown-center-real">
+                    <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Choos your project 
+                    </button>
+                    <ul class="dropdown-menu  ">
+                      <li><a class="dropdown-item" href="#">    {{ form.projet}}</a></li>
+                     
+                    </ul>
+                  </div>
+                
+                    <br>
+                    <div class="dropdown-center-real">
+                        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choos your Emplacement                       
+                       </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#"> <p>List of Emplacement :</p>  {{ form.emplacement}}</a></li>
+                        
+                        </ul>
+                      </div>
+
+                      <br>
+                                        <div class="dropdown-center-real">
+                                            <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Choos your Objectif                       
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">     <p>Objectif ID:  {{form.obj}}</p>
+                                                </a></li>
+                                            
+                                            </ul>
+                                            </div>
+                   
+                    <br>
+
+                    <div class="dropdown-center-real">
+                        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choos your tasks                       
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">     <p>Lists of tasks: {{ form.tache}}</p>
+                            </a></li>
+                        
+                        </ul>
+                        </div>
+                    
+                    <br>
+                    <div class="dropdown-center-real2">
+                        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Esimated Hours                        
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">     <p>Heures Estime:  {{ form.hrs_est}}</p>
+                            </a></li>
+                        
+                        </ul>
+                        </div>
+                                       
+                    <br>
+                    
+                    {{ form.hr_attr }}
+                    <br>
+                  {{ form.livrable }}
+               
+                  
+                </div>
+
+{% endblock %}
+
+{% block back %}
+<div class="d-flex justify-content-center mt-3 login_container">
+  {% comment %} <!-- ---------------------------- Back Button --- ------------------------> {% endcomment %}
+   <a href="{% url 'realisation' %}" class="btn btn-primary btn-sm btn-block">
+                             Back
+   </a>    
+</div>
+{% endblock  %}
+
+

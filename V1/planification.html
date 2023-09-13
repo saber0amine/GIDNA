@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planification page</title>
+    <link rel="stylesheet" href="Style/planification.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-global">
+      <div class="top-bar">
+        <div class="logoI">
+          <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+          <div class="userConsignes">
+            <span class="usePage">CONSIGNES: </span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <!-----------------------------menu content here-------------------------------------->
+        <div class="sidebar">
+          <div class="top">
+            <div class="logo">
+              <img src="Assets/Gidna.jpg" alt="Gidna" />
+            </div>
+          </div>
+          <div class="currentUser">
+            <img src="Assets/PIRèLE 2.png" alt="" class="user-img" />
+            <div>
+              <p class="bold">Amine Saber</p>
+              <p>Stagaire IT</p>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <a href="project.html" >
+                <i class="bx bx-list-check"></i>
+                <span class="nav-item" >Lists</span>
+              </a>
+            </li>
+
+            <div class="nestedList">
+              <ul>
+                <li>
+                  <a href="#project-sec">
+                    <i class="bx bxs-parking"></i>
+                    <span class="nav-item">Projet</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#nature-sec">
+                    <i class="bx bx-leaf"></i>
+                    <span class="nav-item">Nature</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#emp-sec">
+                    <i class="bx bxs-bank"></i>
+                    <span class="nav-item">Emplacement</span>
+                  </a>
+                </li>
+            </div>
+            <li>
+              <a href="planification.html" class="active">
+                <i class="bx bxs-notepad"></i>
+                <span class="nav-item">Planification</span>
+              </a>
+            </li>
+            <li>
+              <a href="objectif.html">
+                <i class="bx bx-bullseye"></i>
+                <span class="nav-item">Objectifs</span>
+              </a>
+            </li>
+            <li>
+              <a href="realisation.html">
+                <i class="bx bx-check-shield"></i>
+                <span class="nav-item">Réalisation</span>
+              </a>
+            </li>
+            <li>
+              <a href="Login.html">
+                <i class="bx bx-log-out-circle"></i>
+                <span class="nav-item">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////CONTENT///////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>Planifiez Vos Objectifs</h1>
+            </div>
+          </div>
+          <br />
+          <div class="row ">
+           
+            <div class="col-md-12" id="project-sec">
+              
+              <!-- <h5 class="title">Projet:</h5> -->
+              
+              <div class="card card-body">
+                
+                <a  id="add-ligne-planification" class="btn btn-primary btn-sm btn-block" href=""
+                  ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle ligne</span></a
+                >
+               
+                <table class="table table-sm table- table-hover table-bordered" id="table">
+                 
+                  <thead>
+                    <tr >    
+                                                  
+                       <th  class="min-col"  scope="col"><i class='bx bx-calendar' ></i> Date </th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-parking"></i> Project</th>
+                      <th class="min-col"  scope="col"><i class="bx bxs-bank"></i> Emplacement</th>
+                      <th class="min-col"  scope="col"><i class="bx bx-bullseye"></i> Objectif</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-receipt' ></i> Taches</th>
+                      <th class="min-col"  scope="col"><i class='bx bxs-hourglass-top' ></i> Heures Estimee</th>
+                      <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+                      <th class="min-col"  scope="col"><i class='bx bx-save'></i> Sauvgarder</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="first-ligne-planification">
+                      <th ><input type="text" class="selected-date">jj/mm/yyyy</th>
+                      <td>
+                        <div class="dropdown-center ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         project 
+                        </button>
+                        <ul class="dropdown-menu  ">
+                          <li><a class="dropdown-item" href="#">Time Sheet</a></li>
+                          <li><a class="dropdown-item" href="#">Expediting</a></li>
+                          <li><a class="dropdown-item" href="#">Full</a></li>
+                        </ul>
+                      </div>
+                    <input type="text" placeholder="Project Name"  class="selected-project">
+                  </td>
+                      <td>
+                        <div class="dropdown-center">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Nature                       
+                       </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">RH</a></li>
+                          <li><a class="dropdown-item" href="#">Administratif</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </div>
+                      <input type="text" placeholder="Nature Name"  class="selected-Nature">
+                    </td>
+                    <td>
+                      <div class="dropdown-center">
+                      <button id="selected-objectif" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Choos N°                       
+                     </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">RH</a></li>
+                        <li><a class="dropdown-item" href="#">Administratif</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    <input type="text" placeholder="Selected Objectif "  class="selected-Nature">
+                  </td>
+                      <td>
+                        <textarea placeholder="Ecrit votre Taches " name="objectif-text" class="selected-tache" cols="15" rows="5"></textarea>
+                      </td>
+                      <td><input type="number"  placeholder="Estime votre temps" class="selected-heure"></td>
+                      <td> 
+                        <div class="btn-group dropstart"> 
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Modifier                       
+                           </button>
+                        <div class="dropdown-menu">
+                          <form class="px-4 py-3" id="modified-form">
+                            <div class="mb-3">
+                              <label for="modifiedProject" class="form-label">Le Projet :</label>
+                              <input type="text" class="form-control" id="modifiedProject" placeholder="Project Name">
+                            </div>
+                            <div class="mb-3">
+                              <label for="modifiedNature" class="form-label">La Nature :</label>
+                              <input type="text" class="form-control" id="modifiedNature" placeholder="Nature Name">
+                            </div>
+                            <label for="exampleDropdownFormPassword1" class="form-label">Objectif :</label>
+
+                            <div class="mb-3">
+                              <textarea style="border: 1px solid #7a7296; border-radius : 2px;" placeholder="Ecrit votre Objectif " name="objectif-text" class="modifiedobjectif" cols="40" rows="5"></textarea>
+                              
+                            </div>
+                            <label for="exampleDropdownFormPassword1" class="form-label">La Tache :</label>
+                            <div class="mb-3">
+                              <textarea style="border: 1px solid #7a7296; border-radius : 2px;" placeholder="Ecrit votre Tache " name="objectif-text" class="modifiedobjectif" cols="40" rows="5"></textarea>
+                              
+                            </div>
+                            <div class="mb-3">
+                              <label for="modifiedNature" class="form-label">Heures Estime :</label>
+                              <input type="number" class="form-control" id="modifiedNature" placeholder="...">
+                            </div>
+                            <a style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+                          </form>
+                         
+                        </div>
+                        </div>
+                      </td>
+                        <!-- ----------------------------SAAAVE Button trigger modal---- ------------------------>
+                        <td> 
+                          <!-- --------------------Button trigger modal ------------------------>
+                 <button id="test" type="button" class="btn btn-success btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Save
+                   </button>
+ 
+                   <!-- -----------Modal -------------------->
+                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel">Successful 👌 </h1>
+                         </div>
+                         <div class="modal-footer">
+                           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                       </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                </div>              
+              </div>
+            </div>
+           
+            <br />
+          
+            
+          </div>
+        </div>
+        
+      </div>
+   <!-- ---------------------------------javascrit files--------------------------------------------------- -->
+   <script src="bootstrap.bundle.min.js / bootstrap.bundle.js "></script>
+   <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+   <script src="js/project.js"></script>
+  </body>
+</html>

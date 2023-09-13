@@ -1,0 +1,122 @@
+{% load static %} 
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T-M Gidna</title>
+    <link rel="stylesheet" href="{% static 'css/projectStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+<style>
+:root { --background-image : url({% static '/images/Background-website-01.jpg' %}) ;}
+</style> 
+   
+  </head>
+  <body>
+    <div class="container-global">
+{% block top %}{% endblock top %}
+      <div class="content">
+        <!-----------------------------menu content here-------------------------------------->
+        <div class="sidebar ">
+          <div class="top">
+            <div class="logo">
+              <img src="{% static 'images/Gidna.jpg' %}" alt="Gidna" />
+            </div>
+          </div>
+          <div class="currentUser"> 
+             <i  style=" font-size:30px;font-weight:1000; color:rgb(250, 250,250 ) ; min-width: 40px;
+                  text-align: center;
+                  height: 50px;
+                  border-radius: 12px;
+                  line-height: 50px; "  class='bx bx-user-circle' > </i>            <div>
+                    <div class="bold">
+                      <div style='color:rgb(250, 250,250);  font-size: 14px; font-weight: 550; display: flex; align-items: center;'>
+                        <span>Bonjour    <strong style="color: rgb(80, 250,250 )" >{{request.user|upper}}</strong></span>
+                      </div>
+                    </div>
+                    
+            </div>
+          </div>
+          
+          <ul>
+            <li>
+              <a href="{% url 'dashboard' %} "class="menu-item">
+                <i class='bx bxs-color' ></i>
+                <span class="nav-item">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'lists' %}" class="menu-item">
+                <div class = "icon" ><i class="bx bx-list-check"></i> </div>
+                <span class="nav-item" >Lists</span>
+              </a>
+            </li>
+
+            <div class="nestedList">
+              <ul>
+                <li>
+                  <a href="#project-sec">
+                    <i class="bx bxs-parking"></i>
+                    <span class="nav-item">Projet</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#nature-sec">
+                    <i class="bx bx-leaf"></i>
+                    <span class="nav-item">Nature</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#emp-sec">
+                    <i class="bx bxs-bank" ></i>
+                    <span class="nav-item">Emplacement</span>
+                  </a>
+                </li>
+            </div>            
+            <li>
+              <a href="{% url 'objectif' %}" class="menu-item">
+                <i class="bx bx-bullseye"></i>
+                <span class="nav-item">Objectifs</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'planification' %} "class="menu-item">
+                <i class="bx bxs-notepad"></i>
+                <span class="nav-item">Planification</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'realisation' %} "class="menu-item">
+                <i class="bx bx-check-shield"></i>
+                <span class="nav-item">Réalisation</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'quitter' %} "class="menu-item">
+                <i class="bx bx-log-out-circle"></i>
+                <span class="nav-item">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+
+ {% block contenu %}
+
+        
+{% endblock contenu %}

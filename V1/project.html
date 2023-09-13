@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lists page</title>
+    <link rel="stylesheet" href="Style/projectStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-global">
+      <div class="top-bar">
+        <div class="logoI">
+          <!-- <img src="Assets/Gidna.jpg" alt="" /> -->
+          <div class="userConsignes">
+            <span class="usePage">CONSIGNES: </span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <!-----------------------------menu content here-------------------------------------->
+        <div class="sidebar">
+          <div class="top">
+            <div class="logo">
+              <img src="Assets/Gidna.jpg" alt="Gidna" />
+            </div>
+          </div>
+          <div class="currentUser">
+            <img src="Assets/PIRèLE 2.png" alt="" class="user-img" />
+            <div>
+              <p class="bold">Amine Saber</p>
+              <p>Stagaire IT</p>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <a href="project.html" class="active">
+                <i class="bx bx-list-check"></i>
+                <span class="nav-item" >Lists</span>
+              </a>
+            </li>
+
+            <div class="nestedList">
+              <ul>
+                <li>
+                  <a href="#project-sec">
+                    <i class="bx bxs-parking"></i>
+                    <span class="nav-item">Projet</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#nature-sec">
+                    <i class="bx bx-leaf"></i>
+                    <span class="nav-item">Nature</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#emp-sec">
+                    <i class="bx bxs-bank"></i>
+                    <span class="nav-item">Emplacement</span>
+                  </a>
+                </li>
+            </div>
+            <li>
+              <a href="planification.html">
+                <i class="bx bxs-notepad"></i>
+                <span class="nav-item">Planification</span>
+              </a>
+            </li>
+            <li>
+              <a href="objectif.html">
+                <i class="bx bx-bullseye"></i>
+                <span class="nav-item">Objectifs</span>
+              </a>
+            </li>
+            <li>
+              <a href="realisation.html">
+                <i class="bx bx-check-shield"></i>
+                <span class="nav-item">Réalisation</span>
+              </a>
+            </li>
+            <li>
+              <a href="Login.html">
+                <i class="bx bx-log-out-circle"></i>
+                <span class="nav-item">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ////////////////////////////////////////////////////////// -->
+
+        <div class="dynamic-content">
+          <div class="currentPageName">
+            <div class="name">
+              <h1>Votre feuille List</h1>
+            </div>
+          </div>
+          <br />
+          <div class="row ">
+<!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>
+<!-------------------------------------------Projet Section------------------------>           
+<div class="col-md-12" id="project-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-project"  class="btn btn-primary btn-sm btn-block" href=""
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle Projet</span></a
+    >
+   
+    <table class="table table-sm table- table-hover table-bordered" id="Project-table">
+     
+      <thead>
+        <tr>                                    
+          <th scope="col"  scope="col"><i class="bx bxs-parking"></i> Project</th>
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-save'></i> Sauvgarder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-ligne-project">
+<!-- ----------------------------Colone 1------------------------ ------------------------>
+
+          <td>
+            <textarea placeholder="Ecrit le nom du projet" name="project-text" class="selected-project" cols="25" rows="2"></textarea>
+            </td>
+<!-- ----------------------------Colone 2------------------------ ------------------------>
+
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Modifier                       
+               </button>
+            <div class="dropdown-menu">
+              <form class="px-4 py-3" id="modified-form">
+                <div class="mb-3">
+                  <label for="modifiedProject" class="form-label">Le Projet :</label>
+                  <input type="text" class="form-control" id="modifiedProject" placeholder="Project Name">
+                </div>
+                <a  style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+              </form>     
+            </div>
+            </div>
+          </td>
+<!-- ----------------------------Colone 3------------------------ ------------------------>
+
+  <td> 
+<!-- ----------------------------Button trigger modal---- ------------------------>
+    <button id="success-save" type="button" class="btn btn-success btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Save
+      </button>
+
+<!-- -----------------------------------------Modal---------- -------------------->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel">Successful 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+          </td>
+          <!-- ----------------------------Colone 3------------------------ ------------------------>
+
+  <td> 
+    <!-- ----------------------------Button trigger modal---- ------------------------>
+        <button id="remove-section-button-project" type="button" class="btn btn-success btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+             remove
+          </button>
+    
+    <!-- -----------------------------------------Modal---------- -------------------->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel">Successful 👌 </h1>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </td>
+          
+        </tr>
+        
+      </tbody>
+      
+    </table>
+
+ 
+    </div>              
+  </div>
+<!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------>
+<!-------------------------------------------Nature Section------------------------>
+<div class="col-md-12" id="nature-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-nature" class="btn btn-primary btn-sm btn-block" href=""
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle Nature</span></a
+    >
+   
+    <table class="table table-sm table- table-hover table-bordered" id="Nature-table">
+     
+      <thead>
+        <tr>    
+                                      
+          <th scope="col"><i class="bx bx-leaf"></i> Nature</th>
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-save'></i> Sauvgarder</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-ligne-nature">
+          <!-- ----------------------------Colone 1------------------------ ------------------------>
+
+<td> <textarea placeholder="Ecrit le nom de la Nature " name="Nature-text" class="selected-nature" cols="25" rows="2"></textarea></td>
+
+<!-- ----------------------------Colone 2------------------------ ------------------------>
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Modifier                       
+               </button>
+            <div class="dropdown-menu">
+              <form class="px-4 py-3" id="modified-form2">
+              
+                <div class="mb-3">
+                  <label for="modifiedNature" class="form-label">La Nature :</label>
+                  <input type="text" class="form-control" id="modifiedNature2" placeholder="Nature Name">
+                </div>
+               
+                <a  style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+              </form>
+             
+            </div>
+            </div>
+          </td>  
+   <!-- ----------------------------Colone 3------------------------ ------------------------>
+
+          <td> 
+
+<!-- ----------------------------Button trigger modal---- ------------------------>
+    <button id="remove-section-button-nature" type="button" class="btn btn-success btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Save
+      </button>
+
+<!-- -----------------------------------------Modal---------- -------------------->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel2">Successful 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    </div>              
+  </div>
+<br />
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<!-------------------------------------------Emplacement Section------------------------>
+<div class="col-md-12" id="emp-sec">
+                            
+  <div class="card card-body">
+    
+    <a  id="add-ligne-emplacement" class="btn btn-primary btn-sm btn-block" href=""
+      ><i class='bx bx-add-to-queue'></i> <span>Ajouter une nouvelle Emplacement</span></a
+    >
+   
+    <table class="table table-sm table- table-hover table-bordered" id="Emplacement-table-">
+     
+      <thead>
+        <tr>    
+                                      
+          <th scope="col"  scope="col"><i class="bx bxs-bank"></i> Emplacement</th>  
+          <th class="min-col"  scope="col"><i class='bx bxs-edit'></i> Modifier</th>
+          <th class="min-col"  scope="col"><i class='bx bx-save'></i> Sauvgarder</th>
+
+
+          
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="first-ligne-emplacement">
+          <td>
+            <textarea placeholder="Ecrit le nom de l'Emplacement" name="Emplacement-text" class="selected-emplacement" cols="25" rows="2"></textarea>
+            </td>
+
+
+          <td> 
+            <div class="btn-group dropstart"> 
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Modifier                       
+               </button>
+            <div class="dropdown-menu">
+              <form class="px-4 py-3" id="modified-form3">
+                <div class="mb-3">
+                  <label for="modifiedProject" class="form-label">L'emplacement :</label>
+                  <input type="text" class="form-control" id="modifiedProject3" placeholder="Emplacement Name">
+                </div>
+               
+                <a  style="background-color: green ; box-shadow: 0 0 1rem green " class="btn btn-success btn-sm btn-block" href="">Save</a>
+              </form>
+             
+            </div>
+            </div>
+          </td>
+
+          
+          <td> 
+<!-- ----------------------------Button trigger modal---- ------------------------>
+    <button id="remove-section-button-emplacement" type="button" class="btn btn-success btn-sm btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Save
+      </button>
+
+<!-- -----------------------------------------Modal---------- -------------------->
+      <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 style="color: green;" class="modal-title fs-5" id="exampleModalLabel3">Successful 👌 </h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    </div>              
+  </div>>
+<!---------------------------------fin sections --------------------------------------------->         
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ---------------------------------javascrit files--------------------------------------------------- -->
+    <script src="bootstrap.bundle.min.js / bootstrap.bundle.js "></script>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="js/project.js"></script>
+  </body>
+</html>

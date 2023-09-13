@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+</head>
+<body>
+    <h1>Calendar</h1>
+    <table>
+        <caption>{{ calendar }}</caption>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+        <tr>
+            {% for day in calendar.day_abbr %}
+                <td>{{ day }}</td>
+            {% endfor %}
+        </tr>
+        {% for week in calendar.monthdayscalendar %}
+            <tr>
+                {% for day in week %}
+                    <td>
+                        {% if day != 0 %}
+                            {{ day }}
+                            {% for entry in calendar_entries %}
+                            <tr>
+                                <td>{{ entry.date }}</td>
+                                <td>{{ entry.get_working_mode_display }}</td>
+                                <td>{{ entry.project_name }}</td>
+                                <td>{{ entry.location }}</td>
+                            </tr>
+                        {% endfor %}                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

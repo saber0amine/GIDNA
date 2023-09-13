@@ -1,0 +1,45 @@
+{% extends 'add-base.html' %} 
+{% block contenu %}
+
+<div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title">Add new Nature</h3>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+
+            <form method="POST" action="">
+                  {% csrf_token %}
+
+                <div class="input-group mb-5">
+                    <div class="input-group-append">
+                        <span class="input-group-text"> <i class="bx bx-leaf"></i></span>
+                    </div>
+                    {{ form.nature }}
+                </div>
+
+{% endblock %}
+
+{% block back %}
+<div class="d-flex justify-content-center mt-3 login_container">
+  {% comment %} <!-- ---------------------------- Back Button --- ------------------------> {% endcomment %}
+   <a href="{% url 'lists' %}" class="btn btn-primary btn-sm btn-block">
+                             Back
+   </a>    
+</div>
+{% endblock  %}
+	
+<script>
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Nature Name..';
+
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+</body>
+</html>
+

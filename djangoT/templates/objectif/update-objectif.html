@@ -1,0 +1,43 @@
+{% extends 'update-base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenu %}
+<div class="login-box">
+<h1>Salut <Strong> {{ request.user }} : </Strong>  </h1>
+
+<h2>Changer votre projet </h2>
+<form method="POST" autocomplete="off" class="card-form">
+<div class="user-box">
+{% csrf_token %}
+
+{{form.obj}}
+<label>Ancien objectif </label>
+<br>
+{{form.date_objectif}}
+<br>
+<div class="dropdown-center ">
+    <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+     Choos your project 
+    </button>
+     {{ form.projet}}
+  </div>
+
+    <br>
+    <div class="dropdown-center">
+        <button class="btn btn-success btn-sm btn-block dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Choos your Nature                       
+       </button>
+       {{ form.nature}}
+        
+      </div>
+<br>
+{% comment %} {{form.date_objectif|as_crispy_field}} {% endcomment %}
+<br>
+
+{% endblock  %}
+{% block back %}
+<button href="{% url 'objectif' %}" class="btn btn-secondary"> 
+    Back &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+</button>
+{% endblock back %}
